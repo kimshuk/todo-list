@@ -62,11 +62,24 @@ class App extends Component {
     });
   };
 
+  handleRemove = id => {
+    const { todos } = this.state;
+    this.setState({
+      todos: todos.filter(todo => todo.id !== id)
+    });
+  };
+
   render() {
     console.log("this state: ", this.state);
 
     const { input, todos } = this.state;
-    const { handleChange, handleCreate, handleKeyPress, handleToggle } = this; // shortens this.method
+    const {
+      handleChange,
+      handleCreate,
+      handleKeyPress,
+      handleToggle,
+      handleRemove
+    } = this; // shortens this.method
     return (
       <TodoListTemplate
         form={
@@ -78,7 +91,11 @@ class App extends Component {
           />
         }
       >
-        <TodoItemList todos={todos} onToggle={handleToggle} />
+        <TodoItemList
+          todos={todos}
+          onToggle={handleToggle}
+          onRemove={handleRemove}
+        />
       </TodoListTemplate>
     );
   }
