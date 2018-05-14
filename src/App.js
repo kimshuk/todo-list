@@ -12,7 +12,8 @@ class App extends Component {
       { id: 0, text: " intro do react", checked: false },
       { id: 1, text: " meeting with react", checked: true },
       { id: 2, text: " summarize everything", checked: false }
-    ]
+    ],
+    colors: ["#343a40", "#f03e3e", "#12b886", "#228ae6"]
   };
 
   handleChange = e => {
@@ -72,7 +73,7 @@ class App extends Component {
   render() {
     console.log("this state: ", this.state);
 
-    const { input, todos } = this.state;
+    const { input, todos, colors } = this.state;
     const {
       handleChange,
       handleCreate,
@@ -90,6 +91,7 @@ class App extends Component {
             onCreate={handleCreate}
           />
         }
+        colors={colors}
       >
         <TodoItemList
           todos={todos}
